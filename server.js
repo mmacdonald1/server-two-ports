@@ -5,15 +5,18 @@ var http = require("http");
 var PORT1 = 7000;
 var PORT2 = 7500;
 
-function handleRequest(request,response){
-    response.end("it works!! Path Hit: " + request.url);
+function handleRequestOne(request,response){
+    response.end("I'm clean");
+}
+function handleRequestTwo(request,response){
+    response.end("but I'm not a great flosser");
 }
 
-var server = http.createServer(handleRequest);
+var server = http.createServer(handleRequestOne);
 server.listen(PORT1, function(){
-    console.log("You are smart. Server listening on http://localhost:%s", PORT1);
+    console.log("Server listening on http://localhost:%s", PORT1);
 });
-
+server = http.createServer(handleRequestTwo);
 server.listen(PORT2, function(){
-    console.log("But you are messy. Server listening on http://localhost:%s", PORT2);
+    console.log("Server listening on http://localhost:%s", PORT2);
 });
